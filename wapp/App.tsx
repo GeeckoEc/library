@@ -26,14 +26,14 @@ const App = () => {
         }
       }>
         <Stack.Screen
-          name='EliminarScreen'
-          component={EliminarScreen}
-          options={{title:'EliminarLibro', headerShown: true}}
-        />
-        <Stack.Screen
           name='MenuScreen'
           component={MenuScreen}
           options={{title:'Biblioteca', headerShown: true}}
+        />
+        <Stack.Screen
+          name='EliminarScreen'
+          component={EliminarScreen}
+          options={{title:'EliminarLibro', headerShown: true}}
         />
         <Stack.Screen
           name='EditarScreen'
