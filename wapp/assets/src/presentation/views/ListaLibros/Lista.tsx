@@ -2,7 +2,7 @@ import React from "react";
 //import { StatusBar } from 'expo-status-bar';
 import { AppColors } from '../../theme/AppTheme';
 import { BotonPeligro, BotonPrimario, BotonSecundario } from '../../../components/Botones';
-import { FlatList, SafeAreaView,StatusBar, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, SafeAreaView,StatusBar, StyleSheet, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../../../../App";
@@ -45,11 +45,11 @@ const editar = () => {
 
 const Item = ({titulo, autor, ver, eliminar, editar}:ItemProps) => (
     <View style={estilos.EstiloItem}>
-        <View style={{flex: 1}}>
+        <View style={{flex: 1,}}>
             <Text style={estilos.EstiloTitulo}>{titulo}</Text>
             <Text style={estilos.EstiloAutor}>{autor}</Text>
         </View>
-        <View style={{flex:1, width:200, position:'relative', marginEnd: 0,flexDirection:'row'}}>
+        <View style={{ flex:1,flexDirection:'row'}}>
             <BotonPrimario
                 icono="list-solid"
                 texto="Detalles"
@@ -74,7 +74,7 @@ export const ListaScreen = () => {
     const Navegacion = useNavigation<StackNavigationProp<RootStackParamList>>();
 
     return (
-        <View >
+        <View style={estilos.EstiloContenedor}>
             <SafeAreaView style={estilos.EstiloContenedorLista}>
                 <FlatList 
                     data={data}
@@ -82,24 +82,34 @@ export const ListaScreen = () => {
                     keyExtractor={item => item.id}
                 />
             </SafeAreaView>
+            
+            <Image 
+                style={estilos.EstiloFondo}
+                source={require('../../../../images/lista.jpg')}
+            />
         </View>
         
     )
 };
 
 const estilos = StyleSheet.create({
+    EstiloContenedor:{
+        flex:               1,
+    },
     EstiloContenedorLista:{
         flex:               1,
-        marginBottom:       20,
-        alignContent:       'center'
+        marginTop:          20,
+        alignContent:       'center',
+        position:           'absolute', 
+        backgroundColor:    AppColors.background,
+        width:              '100%',
+        zIndex:             1000,
+        paddingHorizontal:  20, 
     },
     EstiloItem:{
         paddingVertical:    5,
         paddingHorizontal:  10,
-        backgroundColor:    AppColors.info,
-        width:              1200,
-        left:               '50%',
-        marginLeft:         -600,
+        backgroundColor:    AppColors.box,
         flexDirection:      'row',
         position:           "relative"
     },
@@ -109,6 +119,12 @@ const estilos = StyleSheet.create({
         textTransform:      'uppercase'
     },
     EstiloAutor:{
-        color:              AppColors.tertiary
+        color:              AppColors.primary
+    },
+    EstiloFondo:{
+        width:              '100%',
+        height:             '100%',
+        opacity:            0.7,
+        zIndex:             100
     }
 });

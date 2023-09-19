@@ -26,6 +26,11 @@ const App = () => {
         }
       }>
         <Stack.Screen
+          name='ListaScreen'
+          component={ListaScreen}
+          options={{title:'Libros registrados', headerShown: true}}
+        />
+        <Stack.Screen
           name='MenuScreen'
           component={MenuScreen}
           options={{title:'Biblioteca', headerShown: true}}
@@ -44,11 +49,6 @@ const App = () => {
           name='NuevoScreen'
           component={NuevoScreen}
           options={{title:'Crear nuevo libro', headerShown: true}}
-        />
-        <Stack.Screen
-          name='ListaScreen'
-          component={ListaScreen}
-          options={{title:'Libros registrados', headerShown: true}}
         />
       </Stack.Navigator>
     </NavigationContainer>
